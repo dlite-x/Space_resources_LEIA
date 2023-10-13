@@ -5,6 +5,8 @@ Created on Sat Jun 18 14:02:33 2022
 author: Fardin Ghaffari, Anton Morlock, Dorian Leger
 
 Version 1.0
+
+DL test commi
 """
 
 from modules.beneficiation import *
@@ -154,6 +156,7 @@ def energy_as_func_of_ilmenite(cryocooler_efficiency = 0.1, system_efficiency=0.
     # lists to include in energy as func of ilmenite graph
     ilmenite_grade_list = []
     energy_as_func_of_ilmenite_list = []
+    total_energy_as_func_of_ilmenite_list = []
     max_pre_benef_ilmenite_grade = 16  # [%]
 
     # lists to include in stacked bar chart graph
@@ -164,6 +167,8 @@ def energy_as_func_of_ilmenite(cryocooler_efficiency = 0.1, system_efficiency=0.
     E_energy_list = []
     L_energy_list = []
     S_energy_list = []
+    
+    S_out_dioxy_kg_list = []
 
     ilmenite_wt = np.linspace(0.01, 0.16, 30+1)
 
@@ -231,6 +236,7 @@ def energy_as_func_of_ilmenite(cryocooler_efficiency = 0.1, system_efficiency=0.
         # append results to lists
         ilmenite_grade_list.append(pre_benef_ilmenite_grade_loop*100)
         energy_as_func_of_ilmenite_list.append(Total_energy/S_out_dioxy_kg)
+        total_energy_as_func_of_ilmenite_list.append(Total_energy)
         X_energy_list.append(X_energy/S_out_dioxy_kg)
         T_energy_list.append(T_energy/S_out_dioxy_kg)
         B_energy_list.append(B_energy/S_out_dioxy_kg)
@@ -238,6 +244,7 @@ def energy_as_func_of_ilmenite(cryocooler_efficiency = 0.1, system_efficiency=0.
         E_energy_list.append(E_energy/S_out_dioxy_kg)
         L_energy_list.append(L_energy/S_out_dioxy_kg)
         S_energy_list.append(S_energy/S_out_dioxy_kg)
+        S_out_dioxy_kg_list.append(S_out_dioxy_kg)
 
     # Convert to numpy array to use in stacked bar figure
     ilmenite_grade_list = np.array(ilmenite_grade_list)
@@ -250,6 +257,10 @@ def energy_as_func_of_ilmenite(cryocooler_efficiency = 0.1, system_efficiency=0.
     L_energy_list = np.array(L_energy_list)
     S_energy_list = np.array(S_energy_list)
 
+    #print(X_energy_list)
+    #print(T_energy_list)
+    #print(B_energy_list)
+    
     #joining the energies for the different modules into lists for easier returning
 
     #energy over different ilmenite weight percentages for individual modules
@@ -260,6 +271,6 @@ def energy_as_func_of_ilmenite(cryocooler_efficiency = 0.1, system_efficiency=0.
     energy_slice = [X_energy_per_kg_LOX, T_energy_per_kg_LOX, B_energy_per_kg_LOX, R_energy_per_kg_LOX,
           E_energy_per_kg_LOX, L_energy_per_kg_LOX, S_energy_per_kg_LOX]
 
-    return ilmenite_grade_list, energy_list_per_kg_LOX, energy_as_func_of_ilmenite_list, energy_slice
+    return ilmenite_grade_list, energy_list_per_kg_LOX, energy_as_func_of_ilmenite_list, energy_slice, total_energy_as_func_of_ilmenite_list, S_out_dioxy_kg_list
 
 
