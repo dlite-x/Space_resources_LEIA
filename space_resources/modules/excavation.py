@@ -295,8 +295,8 @@ def get_Alpha(cohCoeff_input, intAngle_input, extAngle_input, motor_efficiency_i
     return alpha_return
 # Just to have an idea of their relative importance:
 
-print("AlphaExc:", AlphaExc, "[kWh/kg]")
+#print("AlphaExc:", AlphaExc, "[kWh/kg]")
 
-print("AlphaTpt:", AlphaTpt, "[kWh/kg]")
+#print("AlphaTpt:", AlphaTpt, "[kWh/kg]")
 
-print("Alpha:", Alpha, "[kWh/kg]")
+#print("Alpha:", Alpha, "[kWh/kg]")

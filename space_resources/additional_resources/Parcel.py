@@ -8,7 +8,6 @@ Description:
 @author: Dorian Leger
 @date: 22/07/2021
 """
-import excavation_model_script
 
 
 class ChemicalParcel():
